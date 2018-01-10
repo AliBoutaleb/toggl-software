@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400" prefWidth="600" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane prefHeight="400" prefWidth="600" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modules.login.controller.loginController">
    <children>
       <TextField fx:id="email" layoutX="207.0" layoutY="163.0" />
       <PasswordField fx:id="password" layoutX="207.0" layoutY="214.0" />
@@ -30,7 +30,7 @@
       </Label>
       <ImageView fitHeight="92.0" fitWidth="158.0" layoutX="254.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/logo.png" />
+            <Image url="@../../../img/logo.png" />
          </image>
       </ImageView>
    </children>

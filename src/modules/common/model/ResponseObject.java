@@ -1,0 +1,24 @@
+package modules.common.model;
+
+public class ResponseObject {
+
+    public int status;
+    public String response;
+
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+}
