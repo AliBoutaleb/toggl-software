@@ -22,9 +22,6 @@ public class loginController {
     public TextField email;
     public PasswordField password;
 
-    // User
-    public String token = "";
-
     public void login(ActionEvent event) {
         ResponseObject response = new ResponseObject();
         try {
@@ -38,7 +35,7 @@ public class loginController {
             // Read response
             if (response.getStatus()==200){
                 // Set token
-                token = response.getResponse();
+                Utils.token = response.getResponse();
                 setStage(event, "../../common/views/menu.fxml");
             }else{
                 // Show error alert

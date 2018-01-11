@@ -23,6 +23,7 @@ public class Utils {
 
     // API
     private static String API_URL = "http://localhost:8081";
+    public static String token = "";
 
     // Send http post request
     public static ResponseObject sendPostRequest(String path, Map<String, String> params) throws IOException{

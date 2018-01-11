@@ -20,7 +20,7 @@ public class TaskController {
 
     public void listProject(){
         try {
-            ResponseObject res = Utils.sendGetRequest("/projects", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YTRiNTMxZDg3YzA0YzA4ZTQ5Yjc4MDciLCJpYXQiOjE1MTU2ODAyNDMsImV4cCI6MTUxNTY4Mzg0M30.LXZ25kaB0dibwTnPTq9ijEtKm2jSwQEdUmwyB5Y_meU");
+            ResponseObject res = Utils.sendGetRequest("/projects", Utils.token);
             JSONParser parser = new JSONParser();
             JSONArray json = (JSONArray) parser.parse(res.getResponse());
             projects.getItems().addAll(json);
