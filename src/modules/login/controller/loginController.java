@@ -9,23 +9,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import modules.common.Utils;
 import modules.common.model.ResponseObject;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class loginController {
-
-    // API
-    private static String API_URL = "http://localhost:8081";
 
     // Login
     public TextField email;
@@ -42,13 +33,13 @@ public class loginController {
             params.put("password",password.getText());
 
             // Send request
-            response = sendPostRequest("/auth/login", params);
+            response = Utils.sendPostRequest("/auth/login", params);
 
             // Read response
             if (response.getStatus()==200){
                 // Set token
                 token = response.getResponse();
-                setStage(event, "../../common/views/test.fxml");
+                setStage(event, "../../common/views/menu.fxml");
             }else{
                 // Show error alert
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -62,34 +53,13 @@ public class loginController {
         }
     }
 
-    public void setStage(ActionEvent event, String fxml) throws IOException{
-        Parent testParent = FXMLLoader.load(getClass().getResource(fxml));
-        Scene testScene = new Scene(testParent);
-        Stage testStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        testStage.setScene(testScene);
-        testStage.show();
-    }
-
-    public ResponseObject sendPostRequest(String path, Map<String, String> params) throws IOException{
-        HttpClient httpClient = HttpClientBuilder.create().build();
-
-        // Config request
-        HttpPost request = new HttpPost(API_URL + path);
-        request.addHeader("Content-Type", "application/json");
-
-        // Set params
-        StringEntity parameters = new StringEntity(new JSONObject(params).toString());
-        request.setEntity(parameters);
-
-        // Execute request and get response
-        HttpResponse response = httpClient.execute(request);
-
-        // Set ResponseObject
-        ResponseObject res = new ResponseObject();
-        res.setStatus(response.getStatusLine().getStatusCode());
-        res.setResponse(EntityUtils.toString(response.getEntity()));
-
-        return res;
+    // Set and switch to new stage
+    public void setStage(ActionEvent event, String fxmlPath) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource(fxmlPath));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

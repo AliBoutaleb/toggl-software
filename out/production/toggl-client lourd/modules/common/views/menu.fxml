@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modules.common.controller.menuController">
+    <children>
+      <AnchorPane layoutX="25.0" layoutY="59.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.bottomAnchor="379.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+              <MenuBar prefHeight="40.0" prefWidth="600.0">
+                  <menus>
+                      <Menu mnemonicParsing="false" text="Task">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#addTask" text="Add" />
+                              <MenuItem mnemonicParsing="false" onAction="#listTask" text="List" />
+                          </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Project">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#listTask" text="Delete" />
+                          </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Help">
+                          <items>
+                              <MenuItem mnemonicParsing="false" text="About" />
+                          </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Unspecified Menu">
+                          <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                          </items>
+                      </Menu>
+                  </menus>
+              </MenuBar>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="commonAnchor" layoutY="40.0" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: #424242;" />
+
+    </children>
+</AnchorPane>
