@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modules.common.Utils;
 import modules.common.model.ResponseObject;
+import modules.common.model.User;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -26,8 +28,8 @@ public class loginController {
         ResponseObject response = new ResponseObject();
         try {
             Map<String, String> params = new HashMap<>();
-            params.put("email",email.getText());
-            params.put("password",password.getText());
+            params.put("email", email.getText());
+            params.put("password", password.getText());
 
             // Send request
             response = Utils.sendPostRequest("/auth/login", params);
@@ -36,6 +38,7 @@ public class loginController {
             if (response.getStatus()==200){
                 // Set token
                 Utils.token = response.getResponse();
+                getUserBytoken();
                 setStage(event, "../../common/views/menu.fxml");
             }else{
                 // Show error alert
@@ -57,6 +60,18 @@ public class loginController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    public User getUserBytoken(){
+        ResponseObject res = new ResponseObject();
+        try{
+            res = Utils.sendGetRequest("/users");
+            ObjectMapper mapper = new ObjectMapper();
+            Utils.user = mapper.readValue(res.getResponse(),User.class);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return new User();
     }
 
 }

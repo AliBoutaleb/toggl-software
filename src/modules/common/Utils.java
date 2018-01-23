@@ -1,12 +1,7 @@
 package modules.common;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import modules.common.model.ResponseObject;
+import modules.common.model.User;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -24,6 +19,7 @@ public class Utils {
     // API
     private static String API_URL = "http://localhost:8081";
     public static String token = "";
+    public static User user;
 
     // Send http post request
     public static ResponseObject sendPostRequest(String path, Map<String, String> params) throws IOException{
@@ -32,6 +28,7 @@ public class Utils {
         // Config request
         HttpPost request = new HttpPost(API_URL + path);
         request.addHeader("Content-Type", "application/json");
+        request.addHeader("Authorization", Utils.token);
 
         // Set params
         StringEntity parameters = new StringEntity(new JSONObject(params).toString());
@@ -49,13 +46,13 @@ public class Utils {
     }
 
     // Send http get request
-    public static ResponseObject sendGetRequest(String path, String token) throws IOException{
+    public static ResponseObject sendGetRequest(String path) throws IOException{
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         // Config request
         HttpGet request = new HttpGet(API_URL + path);
         request.addHeader("Content-Type", "application/json");
-        request.addHeader("Authorization", token);
+        request.addHeader("Authorization", Utils.token);
 
         // Execute request and get response
         HttpResponse response = httpClient.execute(request);

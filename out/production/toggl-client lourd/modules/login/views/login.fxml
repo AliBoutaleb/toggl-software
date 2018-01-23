@@ -9,10 +9,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400" prefWidth="600" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modules.login.controller.loginController">
+<AnchorPane prefHeight="400" prefWidth="600" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modules.login.controller.loginController">
    <children>
-      <TextField fx:id="email" layoutX="207.0" layoutY="163.0" />
-      <PasswordField fx:id="password" layoutX="207.0" layoutY="214.0" />
+      <TextField fx:id="email" layoutX="207.0" layoutY="163.0" text="ali@mail.com" />
+      <PasswordField fx:id="password" layoutX="207.0" layoutY="214.0" text="password" />
       <Button layoutX="234.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #FE2E2E;" text="Se connecter" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
