@@ -14,22 +14,13 @@
                       <Menu mnemonicParsing="false" text="Task">
                           <items>
                               <MenuItem mnemonicParsing="false" onAction="#addTask" text="Add" />
-                              <MenuItem mnemonicParsing="false" onAction="#listTask" text="List" />
+                              <MenuItem mnemonicParsing="false" onAction="#myTasks" text="My tasks" />
                           </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Project">
                           <items>
-                              <MenuItem mnemonicParsing="false" onAction="#listTask" text="Delete" />
-                          </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Help">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="About" />
-                          </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Unspecified Menu">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Add" />
+                              <MenuItem mnemonicParsing="false" onAction="#myTasks" text="My projects" />
                           </items>
                       </Menu>
                   </menus>

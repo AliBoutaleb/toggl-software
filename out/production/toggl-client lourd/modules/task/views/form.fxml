@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modules.task.controller.TaskController">
+<AnchorPane prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modules.task.controller.formController">
    <children>
       <TextField fx:id="title" layoutX="227.0" layoutY="197.0" />
       <Label layoutX="146.0" layoutY="96.0" style="-fx-background-color: #FE2E2E;" text="Project" textFill="WHITE">
@@ -33,7 +33,7 @@
       </Label>
       <ChoiceBox fx:id="projects" layoutX="246.0" layoutY="94.0" prefWidth="150.0" />
       <ChoiceBox fx:id="users" layoutX="246.0" layoutY="144.0" prefWidth="150.0" />
-      <Button layoutX="281.0" layoutY="301.0" mnemonicParsing="false" style="-fx-background-color: #FE2E2E;" text="Add" onAction="#addTask" textFill="WHITE" />
+      <Button layoutX="281.0" layoutY="301.0" mnemonicParsing="false" onAction="#addTask" style="-fx-background-color: #FE2E2E;" text="Add" textFill="WHITE" />
       <DatePicker fx:id="datePicker" layoutX="205.0" layoutY="250.0" />
    </children>
 </AnchorPane>

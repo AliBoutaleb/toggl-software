@@ -5,8 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
-import modules.common.Utils;
-import modules.common.model.ResponseObject;
 
 import java.io.IOException;
 
@@ -22,9 +20,9 @@ public class menuController {
         commonAnchor.getChildren().setAll(node);
     }
 
-    public void listTask(ActionEvent event) throws IOException {
+    public void myTasks(ActionEvent event) throws IOException {
         Node node;
-        node = (Node) FXMLLoader.load(getClass().getResource("../../task/views/task.fxml"));
+        node = (Node) FXMLLoader.load(getClass().getResource("../../task/views/myTasks.fxml"));
         commonAnchor.getChildren().setAll(node);
     }
 }
