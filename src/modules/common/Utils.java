@@ -40,7 +40,9 @@ public class Utils {
         // Set ResponseObject
         ResponseObject res = new ResponseObject();
         res.setStatus(response.getStatusLine().getStatusCode());
-        res.setResponse(EntityUtils.toString(response.getEntity()));
+        if(response.getEntity()!=null){
+            res.setResponse(EntityUtils.toString(response.getEntity()));
+        }
 
         return res;
     }

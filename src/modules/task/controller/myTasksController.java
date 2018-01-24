@@ -1,7 +1,5 @@
 package modules.task.controller;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,13 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Duration;
 import modules.common.Utils;
 import modules.common.model.ResponseObject;
 import modules.common.model.Task;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class myTasksController{
 
@@ -27,6 +25,9 @@ public class myTasksController{
     public Label selectDueDate;
     @FXML
     public Label selectTimer;
+    public String selectID;
+    public long startTime;
+    public long currentTime;
 
     public void initialize(){
         setTableView();
@@ -38,16 +39,48 @@ public class myTasksController{
     }
 
     public void startTimer(){
-        Integer timer = 15;
-        selectTimer.setText(timer.toString());
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2500)));
-        timeline.play();
-        System.out.println(timeline.getDelay());
+        startTime = System.currentTimeMillis();
     }
 
     public void stopTimer(){
+        // Time spend on task
+        long spendTime = System.currentTimeMillis() - startTime;
 
+        // Current timer value
+        String[] timer = selectTimer.getText().split(":");
+        currentTime = timerToMilliseconds(
+                Long.valueOf(timer[0]).longValue(),
+                Long.valueOf(timer[1]).longValue(),
+                Long.valueOf(timer[2]).longValue());
+
+        // Update new timer of task
+        String newTime = millisecondsToTimer(currentTime + spendTime);
+        HashMap<String, String> params = new HashMap<>();
+        params.put("timer", newTime);
+        try {
+            ResponseObject res = Utils.sendPostRequest("/tasks/" + selectID, params);
+            System.out.println(res.getStatus());
+            System.out.println(res.getResponse());
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    // Convert ms to timer (hh:mm:ss)
+    public String millisecondsToTimer(long duration) {
+        long ms = (duration%1000)/100;
+        long sec  = (duration/1000)%60;
+        long min  = ((duration/(1000*60))%60);
+        long hours  = ((duration/(1000*60*60))%24);
+
+        String timer = hours+":"+min+":"+sec;
+
+        return timer;
+    }
+
+    // Convert timer to ms
+    public long timerToMilliseconds(long hours, long minutes, long seconds ) {
+        return (hours*1000*60*60)+(minutes*1000*60)+(seconds*1000);
     }
 
     public void setTableView(){
@@ -66,6 +99,8 @@ public class myTasksController{
         Task task = table.getSelectionModel().selectedItemProperty().getValue();
         selectTitle.setText(task.getTitle());
         selectDueDate.setText(task.getDueDate());
+        selectTimer.setText(task.getTimer());
+        selectID = task.getId();
 
         // Set label visible
         selectTitle.setVisible(true);
