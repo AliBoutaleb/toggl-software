@@ -25,4 +25,17 @@ public class menuController {
         node = (Node) FXMLLoader.load(getClass().getResource("../../task/views/myTasks.fxml"));
         commonAnchor.getChildren().setAll(node);
     }
+
+    @FXML
+    public void addProject(ActionEvent event) throws IOException {
+        Node node;
+        node = (Node) FXMLLoader.load(getClass().getResource("../../project/views/form.fxml"));
+        commonAnchor.getChildren().setAll(node);
+    }
+
+    public void myProjects(ActionEvent event) throws IOException {
+        Node node;
+        node = (Node) FXMLLoader.load(getClass().getResource("../../project/views/myProjects.fxml"));
+        commonAnchor.getChildren().setAll(node);
+    }
 }

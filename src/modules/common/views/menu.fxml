@@ -19,8 +19,8 @@
                       </Menu>
                       <Menu mnemonicParsing="false" text="Project">
                           <items>
-                              <MenuItem mnemonicParsing="false" text="Add" />
-                              <MenuItem mnemonicParsing="false" onAction="#myTasks" text="My projects" />
+                              <MenuItem mnemonicParsing="false" onAction="#addProject" text="Add" />
+                              <MenuItem mnemonicParsing="false" onAction="#myProjects" text="My projects" />
                           </items>
                       </Menu>
                   </menus>

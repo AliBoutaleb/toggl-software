@@ -17,7 +17,7 @@ public class Project {
     @JsonProperty("status")
     boolean status;
     @JsonProperty("members")
-    String[] users;
+    String[] members;
     @JsonProperty("tasks")
     String[] tasks;
 

@@ -55,8 +55,8 @@ public class formController {
         try {
             // Create params with task data
             HashMap<String, String> params = new HashMap<>();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             params.put("title", title.getText());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             params.put("dueDate", datePicker.getValue().format(formatter));
             params.put("time","00:00:00");
             User owner = (User) users.getValue();

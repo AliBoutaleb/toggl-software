@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="selectDueData" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modules.project.controller.myProjectsController">
+   <children>
+      <TableView fx:id="table" layoutX="34.0" layoutY="102.0" prefHeight="229.0" prefWidth="467.0"></TableView>
+   </children>
+</AnchorPane>
