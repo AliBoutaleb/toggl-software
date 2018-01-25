@@ -4,6 +4,7 @@ import modules.common.model.ResponseObject;
 import modules.common.model.User;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -62,7 +63,31 @@ public class Utils {
         // Set ResponseObject
         ResponseObject res = new ResponseObject();
         res.setStatus(response.getStatusLine().getStatusCode());
-        res.setResponse(EntityUtils.toString(response.getEntity()));
+        if(response.getEntity()!=null){
+            res.setResponse(EntityUtils.toString(response.getEntity()));
+        }
+
+        return res;
+    }
+
+    // Send http delete request
+    public static ResponseObject sendDeleteRequest(String path) throws IOException{
+        HttpClient httpClient = HttpClientBuilder.create().build();
+
+        // Config request
+        HttpDelete request = new HttpDelete(API_URL + path);
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Authorization", Utils.token);
+
+        // Execute request and get response
+        HttpResponse response = httpClient.execute(request);
+
+        // Set ResponseObject
+        ResponseObject res = new ResponseObject();
+        res.setStatus(response.getStatusLine().getStatusCode());
+        if(response.getEntity()!=null){
+            res.setResponse(EntityUtils.toString(response.getEntity()));
+        }
 
         return res;
     }

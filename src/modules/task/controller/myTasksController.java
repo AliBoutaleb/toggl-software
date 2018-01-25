@@ -59,8 +59,7 @@ public class myTasksController{
         params.put("timer", newTime);
         try {
             ResponseObject res = Utils.sendPostRequest("/tasks/" + selectID, params);
-            System.out.println(res.getStatus());
-            System.out.println(res.getResponse());
+            listUserTasks();
         }catch (IOException e){
             e.printStackTrace();
         }

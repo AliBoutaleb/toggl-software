@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="selectDueData" prefHeight="380.0" prefWidth="600.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="modules.project.controller.myProjectsController">
    <children>
-      <TableView fx:id="table" layoutX="34.0" layoutY="102.0" prefHeight="229.0" prefWidth="467.0"></TableView>
+      <TableView fx:id="table" onMouseClicked="#selectProject" layoutX="24.0" layoutY="48.0" prefHeight="268.0" prefWidth="191.0" />
+      <Label layoutX="24.0" layoutY="14.0" style="-fx-background-color: #FE2E2E;" text="My projects" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="24.0" layoutY="327.0" mnemonicParsing="false" onAction="#deleteProject" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="modify" layoutX="107.0" layoutY="327.0" mnemonicParsing="false" onAction="#modifyProject" style="-fx-background-color: orange;" text="Modify" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="save" disable="true" layoutX="195.0" layoutY="327.0" mnemonicParsing="false" onAction="#saveProject" prefHeight="39.0" prefWidth="81.0" style="-fx-background-color: green;" text="Save" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tableMembers" layoutX="221.0" layoutY="48.0" prefHeight="108.0" prefWidth="364.0" />
+      <Label layoutX="229.0" layoutY="16.0" style="-fx-background-color: #FE2E2E;" text="Members" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableTasks" layoutX="221.0" layoutY="208.0" prefHeight="108.0" prefWidth="364.0" />
+      <Label layoutX="229.0" layoutY="169.0" style="-fx-background-color: #FE2E2E;" text="Tasks" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
